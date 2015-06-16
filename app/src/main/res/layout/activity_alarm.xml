@@ -1,0 +1,95 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.ouwenjie.note.activity.AlarmActivity"
+    >
+
+    <TextView
+        android:id="@+id/alarm_activity_title_tv"
+        android:text="来自《记得》笔记"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/bg_alarm_activity_item"
+        android:textSize="16sp"
+        />
+
+    <ImageView
+        android:id="@+id/alarm_activity_alarm_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/alarm_activity_title_tv"
+        android:background="@drawable/bg_alarm_activity_item"
+        android:padding="30dp"
+        android:src="@drawable/ic_alarm_grey600_48dp"
+        />
+
+    <TextView
+        android:id="@+id/alarm_activity_content_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alarm_activity_alarm_icon"
+        android:lineSpacingMultiplier="1.2"
+        android:background="@drawable/bg_alarm_activity_item"
+        android:padding="5dp"
+        android:maxLines="5"
+        android:minLines="5"
+        android:textColor="@color/white"
+        />
+
+    <LinearLayout
+        android:id="@+id/alarm_activity_btn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:layout_below="@id/alarm_activity_content_tv"
+        android:background="@drawable/bg_alarm_activity_item"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/alarm_activity_close_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_img_selected"
+            android:text="关闭提醒"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            />
+
+        <Button
+            android:id="@+id/alarm_activity_later_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_img_selected"
+            android:text="稍后提醒"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/alarm_activity_one_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alarm_activity_btn_layout"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bg_alarm_activity_item"
+        android:gravity="center"
+        android:text="Good Good Study
+        Day Day Up"
+        android:textSize="14sp"
+        android:lineSpacingMultiplier="1.5"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ouwenjie.note.activity.SmsLoginActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"/>
+
+
+    <EditText
+        android:id="@+id/smslogin_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:layout_below="@id/toolbar"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:inputType="phone"
+        android:hint="手机号"
+        />
+
+    <LinearLayout
+        android:id="@+id/sms_code_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/smslogin_phone_number"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
+        >
+        <EditText
+            android:id="@+id/login_sms_code"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:hint="验证码"
+            />
+        <Button
+            android:id="@+id/login_get_sms_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/material_deep_teal_500"
+            android:text="获取验证码"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/smslogin_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/sms_code_layout"
+        android:background="@color/material_deep_teal_500"
+        android:text="登录"
+        />
+
+</RelativeLayout>

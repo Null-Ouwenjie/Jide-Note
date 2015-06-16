@@ -1,0 +1,52 @@
+<resources>
+
+    <style name="AppTheme" parent="AppBaseTheme"/>
+
+    <!-- Base application theme. -->
+    <style name="MyAppBaseTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- actionbar颜色 -->
+        <item name="colorPrimary">@color/primary_material_dark</item>
+        <!-- 状态栏颜色 -->
+        <item name="colorPrimaryDark">@color/primary_material_dark</item>
+        <!-- 窗口的背景颜色 -->
+        <item name="android:windowBackground">@color/note_bg_drak</item>
+
+        <item name="colorAccent">@color/accent_material_dark</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+
+    </style>
+
+    <!-- popupWindow 弹出和消失动画 -->
+    <style name="AnimationFade">
+        <item name="android:windowEnterAnimation">@anim/popupwindow_zoom_in</item>
+        <item name="android:windowExitAnimation">@anim/popupwindow_zoom_out</item>
+
+    </style>
+
+    <!-- 功能介绍的字体布局 -->
+    <style name="Introduce_Title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textColor">#eeeeee</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Introduce_Content">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textColor">#999999</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,88 @@
+<io.codetail.widget.RevealFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#333333"
+        tools:context="com.ouwenjie.note.fragment.ListFragment">
+
+        <ImageView
+            android:id="@+id/settings_icon"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:src="@mipmap/icon_jide"
+            />
+
+        <TextView
+            android:id="@+id/settings_version_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/settings_icon"
+            android:text="V1.0.0"
+            android:textSize="12sp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/settings_version_tv"
+            android:orientation="vertical"
+
+            >
+
+
+            <TextView
+                android:id="@+id/settings_score_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#666666"
+                android:padding="15dp"
+                android:text="去评分"
+                />
+
+            <View style="@style/Separator.Small.Grey" />
+
+            <TextView
+                android:id="@+id/settings_introduce_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#666666"
+                android:padding="15dp"
+                android:text="功能介绍"
+                />
+
+            <View style="@style/Separator.Small.Grey" />
+
+            <TextView
+                android:id="@+id/settings_feedback_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#666666"
+                android:padding="15dp"
+                android:text="意见反馈"
+                />
+
+            <View style="@style/Separator.Small.Grey" />
+
+            <TextView
+                android:id="@+id/settings_about_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#666666"
+                android:padding="15dp"
+                android:text="关于"
+                />
+
+        </LinearLayout>
+    </RelativeLayout>
+</io.codetail.widget.RevealFrameLayout>

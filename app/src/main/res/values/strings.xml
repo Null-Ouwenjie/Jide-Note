@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">记得</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="laji">软件设计师的工作，受到系统架构师的影响。当系统架构师决定了整个系统架构后，软件设计师会试着实作一个系统原型。
+系统原型的目的，在于验证系统架构师提出的架构。当架构过于复杂，或开发成本过高时，软件设计师必需要求系统架构师，修改提出的架构，因为在实务上，由于成本、技术等关系，是无法在经济的状况下达成。
+软件设计师，必需对软件技术十分专长，也必需对客户的需求有一定程度的了解。在系统原型中，软件设计师会实作多个程式范型(Program Pattern)，每个程式范型，对应到一种客户需求的程式类型。
+系统原型开发成功后，后续的团队，就可以使用完成的程式范型，快速地将客户的需求，转化为系统程式。</string>
+    <string name="title_activity_edit_note">记事本</string>
+    <string name="title_activity_alarm">提醒</string>
+    <string name="title_activity_introduce">功能介绍</string>
+    <string name="title_activity_about">关于</string>
+    <string name="title_activity_thanks">感谢</string>
+    <string name="title_activity_about_me"> 关于我</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_user_center">UserCenterActivity</string>
+    <string name="thanks_opensource">在开发过程中，使用了很多开源项目，没有他们的无私贡献就没有这个作品，在此对他们表示感谢。</string>
+
+</resources>

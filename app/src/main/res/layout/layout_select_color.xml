@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="10dp"
+    card_view:cardElevation="3dp"
+    card_view:cardBackgroundColor="#dd333333"
+    card_view:cardCornerRadius="3dp"
+    card_view:contentPadding="5dp"
+    >
+
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+
+
+        <View
+            android:id="@+id/yellow"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/light_yellow"
+            />
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="match_parent"/>
+
+        <View
+            android:id="@+id/red"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/light_red"
+            />
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="match_parent"/>
+
+        <View
+            android:id="@+id/blue"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/light_blue"
+            />
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="match_parent"/>
+
+        <View
+            android:id="@+id/green"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/light_green"
+            />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

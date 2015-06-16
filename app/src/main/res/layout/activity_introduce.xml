@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ouwenjie.note.activity.IntroduceActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"/>
+
+    <TextView
+        style="@style/Introduce_Title"
+        android:text="提示"
+        />
+
+    <TextView
+        style="@style/Introduce_Content"
+        android:text="用不同的颜色标识记事，简单地分类\n方便快捷的搜索功能，轻松找到记事\n为“记事”设置闹钟，使之成为“提醒”"/>
+
+    <View style="@style/Separator.Small.WhiteGrey" />
+
+    <TextView
+        style="@style/Introduce_Title"
+        android:text="记事"
+        />
+
+    <TextView
+        style="@style/Introduce_Content"
+        android:text="随时随地记录你的所思所想，心情语录等。"
+        />
+
+    <View style="@style/Separator.Small.WhiteGrey" />
+
+    <TextView
+        style="@style/Introduce_Title"
+        android:text="提醒"
+        />
+
+    <TextView
+        style="@style/Introduce_Content"
+        android:text="适时适地收到提醒，不耽误事。"
+        />
+
+    <View style="@style/Separator.Small.WhiteGrey" />
+
+    <TextView
+        style="@style/Introduce_Title"
+        android:text="归档"
+        />
+
+    <TextView
+        style="@style/Introduce_Content"
+        android:text="已经过时或已完成的记事和提醒。"
+        />
+
+    <View style="@style/Separator.Small.WhiteGrey" />
+
+    <TextView
+        style="@style/Introduce_Title"
+        android:text="回收"
+        />
+
+    <TextView
+        style="@style/Introduce_Content"
+        android:text="不再需要的记事和提醒。"
+        />
+
+    <View style="@style/Separator.Small.WhiteGrey" />
+
+</LinearLayout>

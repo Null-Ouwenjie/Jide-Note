@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="light_red">#fed3b8</color>
+    <color name="light_green">#dce6a9</color>
+    <color name="light_blue">#d1e4e8</color>
+    <color name="light_yellow">#fae5a2</color>
+
+    <color name="light_red_dark">#ffee496b</color>
+    <color name="light_green_dark">#ff9ce699</color>
+    <color name="light_blue_dark">#ff2880c0</color>
+    <color name="light_yellow_dark">#ffe0b07a</color>
+
+    <color name="note_bg_drak">#333333</color>
+
+</resources>

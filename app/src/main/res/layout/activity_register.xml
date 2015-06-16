@@ -1,0 +1,96 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ouwenjie.note.activity.account.RegisterActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"/>
+
+    <EditText
+        android:id="@+id/register_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@id/toolbar"
+        android:inputType="phone"
+        android:hint="请使用手机号注册"
+        />
+
+    <EditText
+        android:id="@+id/register_password_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@id/register_phone_number"
+        android:inputType="textPassword"
+        android:hint="密码"
+        />
+
+    <EditText
+        android:id="@+id/register_password_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@id/register_password_1"
+        android:inputType="textPassword"
+        android:hint="确认密码"
+        />
+
+    <LinearLayout
+        android:id="@+id/register_smscode_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_password_2"
+        android:orientation="horizontal"
+        >
+        <EditText
+            android:id="@+id/register_smscode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_below="@id/register_password_1"
+            android:inputType="number"
+            android:hint="验证码"
+            />
+
+        <Button
+            android:id="@+id/register_get_smscode_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/material_blue_grey_800"
+            android:layout_margin="10dp"
+            android:text="获取验证码"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/register_register_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/register_smscode_layout"
+        android:background="@color/material_blue_grey_800"
+        android:text="注册"
+        />
+
+    <TextView
+        android:id="@+id/register_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:layout_below="@id/register_register_btn"
+        android:layout_centerHorizontal="true"
+        android:text="已有账号，返回登录"
+        android:textSize="12sp"
+        />
+
+</RelativeLayout>

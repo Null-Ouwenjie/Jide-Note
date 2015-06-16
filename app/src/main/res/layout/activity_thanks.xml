@@ -1,0 +1,113 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ouwenjie.note.activity.ThanksActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:textSize="12sp"
+                android:text="@string/thanks_opensource"
+                />
+
+            <View style="@style/Separator.Small.WhiteGrey"/>
+
+            <TextView
+                style="@style/Introduce_Title"
+                android:text="Side-Menu.Android"
+                />
+            <TextView
+                style="@style/Introduce_Content"
+                android:text="https://github.com/Yalantis/Side-Menu.Android"
+                android:autoLink="web"
+                />
+            <View style="@style/Separator.Small.WhiteGrey"/>
+
+            <TextView
+                style="@style/Introduce_Title"
+                android:text="CircularReveal"
+                />
+            <TextView
+                style="@style/Introduce_Content"
+                android:text="https://github.com/ozodrukh/CircularReveal"
+                android:autoLink="web"
+                />
+            <View style="@style/Separator.Small.WhiteGrey"/>
+
+            <TextView
+                style="@style/Introduce_Title"
+                android:text="recyclerview-animators"
+                />
+            <TextView
+                style="@style/Introduce_Content"
+                android:text="https://github.com/wasabeef/recyclerview-animators"
+                android:autoLink="web"
+                />
+            <View style="@style/Separator.Small.WhiteGrey"/>
+
+            <TextView
+                style="@style/Introduce_Title"
+                android:text="MaterialDesignLibrary"
+                />
+            <TextView
+                style="@style/Introduce_Content"
+                android:text="https://github.com/navasmdc/MaterialDesignLibrary"
+                android:autoLink="web"
+                />
+            <View style="@style/Separator.Small.WhiteGrey"/>
+
+            <TextView
+                style="@style/Introduce_Title"
+                android:text="material-dialogs"
+                />
+            <TextView
+                style="@style/Introduce_Content"
+                android:text="https://github.com/afollestad/material-dialogs"
+                android:autoLink="web"
+                />
+            <View style="@style/Separator.Small.WhiteGrey"/>
+
+            <TextView
+                style="@style/Introduce_Title"
+                android:text="datetimepicker"
+                />
+            <TextView
+                style="@style/Introduce_Content"
+                android:text="https://github.com/flavienlaurent/datetimepicker"
+                android:autoLink="web"
+                />
+            <View style="@style/Separator.Small.WhiteGrey"/>
+
+            <TextView
+                style="@style/Introduce_Title"
+                android:text="sugar"
+                />
+            <TextView
+                style="@style/Introduce_Content"
+                android:text="https://github.com/satyan/sugar"
+                android:autoLink="web"
+                />
+            <View style="@style/Separator.Small.WhiteGrey"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,199 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/edit_note_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="6dp"
+    android:background="@color/light_yellow"
+    >
+
+    <LinearLayout
+        android:id="@+id/edit_note_tools_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/light_yellow_dark"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+
+        <ImageView
+            android:id="@+id/back_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/ic_chevron_left_black_24dp"
+            />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            >
+            <TextView
+                android:id="@+id/note_date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2月28日"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/note_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14:20"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                />
+            </LinearLayout>
+
+        <ImageView
+            android:id="@+id/note_palette_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/ic_color_lens_black_24dp"
+            />
+
+        <ImageView
+            android:id="@+id/note_alarm_clock_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/ic_alarm_off_black_24dp"
+            />
+
+        <ImageView
+            android:id="@+id/note_added_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/ic_image_black_24dp"
+            />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/edit_note_tools_bar">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/note_image_list_layout"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:background="#99666666"
+            android:visibility="visible"
+            />
+
+        <LinearLayout
+            android:id="@+id/note_image_list_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/note_image_list_layout"
+            android:background="#99666666"
+            android:orientation="vertical"
+            >
+            <ImageView
+                android:id="@+id/note_image_hide_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_expand_less_white"
+                android:background="#33333333"/>
+
+            <TextView
+                android:id="@+id/note_image_tip_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#33333333"
+                android:gravity="center"
+                android:text="隐藏图片列表"
+                />
+
+            <ImageView
+                android:id="@+id/note_image_show_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_expand_more_white"
+                android:background="#33333333"
+                android:visibility="gone"
+                />
+
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/note_edit_content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/note_image_list_all"
+            android:scrollbars="vertical"
+            >
+
+            <EditText
+                android:id="@+id/note_edit_content_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="start|top"
+                android:background="@null"
+                android:textCursorDrawable="@null"
+                android:textColor="#000000"
+                />
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/alarm_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#33999999"
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:src="@drawable/ic_alarm_black_24dp"
+                />
+
+            <TextView
+                android:id="@+id/alarm_date_time_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                />
+
+            <ImageView
+                android:id="@+id/close_alarm_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:src="@drawable/ic_close_black_24dp"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#666666"
+        android:layout_below="@id/edit_note_tools_bar"
+        />
+
+</RelativeLayout>
+

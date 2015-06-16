@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ouwenjie.note.activity.AboutActivity"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"/>
+
+    <TextView
+        android:id="@+id/about_opensource_licence_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#666666"
+        android:padding="15dp"
+        android:text="感谢"
+        />
+
+    <View style="@style/Separator.Small.Grey" />
+
+    <TextView
+        android:id="@+id/about_developer_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#666666"
+        android:padding="15dp"
+        android:text="关于开发者"
+        />
+
+    <View style="@style/Separator.Small.Grey" />
+
+
+</LinearLayout>
