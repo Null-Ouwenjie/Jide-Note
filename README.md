@@ -15,9 +15,6 @@ Jide-Note
 
 ![image](https://github.com/JackOwen/Jide-Note/blob/master/screenshots/5.png)   
 
-![image](https://github.com/JackOwen/Jide-Note/blob/master/screenshots/6.png)   
-
-
 ## License   
 
 MIT License   
