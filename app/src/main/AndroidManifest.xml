@@ -45,7 +45,7 @@
             android:value="555bfe3267e58e6caf0011fe" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="${UMENG_CHANNEL_VALUE}" />
+            android:value="Github" />
 
         <!-- Sugar ORM 相关配置 -->
         <meta-data
