@@ -5,17 +5,17 @@ Jide-Note
 
 ## ScreenShots   
 
-![image](https://github.com/JackOwen/Jide-Note/tree/master/screenshots/1.png)   
+![image](https://github.com/JackOwen/Jide-Note/blob/master/screenshots/1.png)   
 
-![image](https://github.com/JackOwen/Jide-Note/tree/master/screenshots/2.png)   
+![image](https://github.com/JackOwen/Jide-Note/blob/master/screenshots/2.png)   
 
-![image](https://github.com/JackOwen/Jide-Note/tree/master/screenshots/3.png)   
+![image](https://github.com/JackOwen/Jide-Note/blob/master/screenshots/3.png)   
 
-![image](https://github.com/JackOwen/Jide-Note/tree/master/screenshots/4.png)   
+![image](https://github.com/JackOwen/Jide-Note/blob/master/screenshots/4.png)   
 
-![image](https://github.com/JackOwen/Jide-Note/tree/master/screenshots/5.png)   
+![image](https://github.com/JackOwen/Jide-Note/blob/master/screenshots/5.png)   
 
-![image](https://github.com/JackOwen/Jide-Note/tree/master/screenshots/6.png)   
+![image](https://github.com/JackOwen/Jide-Note/blob/master/screenshots/6.png)   
 
 
 ## License   
