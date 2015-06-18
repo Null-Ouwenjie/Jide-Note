@@ -1,0 +1,35 @@
+<io.codetail.widget.RevealFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#333333"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/content_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            />
+
+        <com.gc.materialdesign.views.ButtonFloat
+            android:id="@+id/new_edit_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="#ff2880c0"
+            materialdesign:animate="true"
+            materialdesign:iconDrawable="@drawable/ic_edit_white_24dp" />
+
+    </RelativeLayout>
+
+</io.codetail.widget.RevealFrameLayout>

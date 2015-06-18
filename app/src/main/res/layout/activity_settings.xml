@@ -25,7 +25,7 @@
             android:layout_height="104dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:src="@mipmap/icon_jide"
+            android:src="@drawable/icon_jide_512"
             />
 
         <TextView

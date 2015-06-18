@@ -18,12 +18,7 @@ import android.widget.LinearLayout;
 
 import com.ouwenjie.note.NoteApplication;
 import com.ouwenjie.note.R;
-import com.ouwenjie.note.fragment.ArchiveFragment;
-import com.ouwenjie.note.fragment.ListFragment;
-import com.ouwenjie.note.fragment.RecordFragment;
-import com.ouwenjie.note.fragment.RecycleFragment;
-import com.ouwenjie.note.fragment.RemindFragment;
-import com.ouwenjie.note.fragment.SettingsFragment;
+import com.ouwenjie.note.fragment.ContentFragment;
 import com.ouwenjie.note.model.BaseNote;
 import com.ouwenjie.note.utils.LogUtils;
 import com.ouwenjie.note.utils.MyActivityManager;
@@ -62,12 +57,13 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
 
     private TreeSet<BaseNote> noteSet = new TreeSet<>();    //笔记集合
 
-    private RecordFragment recordFragment;
-    private ListFragment listFragment;      // 未开发
-    private RemindFragment remindFragment;
-    private ArchiveFragment archiveFragment;
-    private RecycleFragment recycleFragment;
-    private SettingsFragment settingsFragment;// 废弃
+    private ContentFragment contentFragment;
+
+    private ContentFragment recordFragment;
+    private ContentFragment listFragment;      // 未开发
+    private ContentFragment remindFragment;
+    private ContentFragment archiveFragment;
+    private ContentFragment recycleFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +73,7 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
         MyActivityManager.getInstance().addActivity(this);
 
         noteSet = ((NoteApplication)getApplication()).getNoteSet();
-
-        recordFragment = RecordFragment.newInstance();
+        recordFragment = ContentFragment.newInstance(ContentFragment.RECORD);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_frame,recordFragment)
                 .commit();
@@ -123,6 +118,7 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
         MyActivityManager.getInstance().finishActivity(this.getClass());
 
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -374,7 +370,7 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
         switch (slideMenuItem.getName()){
 
             case RECORD:
-                recordFragment = RecordFragment.newInstance();
+                recordFragment = ContentFragment.newInstance(ContentFragment.RECORD);
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, recordFragment).commit();
                 return recordFragment;
 //            case LIST:
@@ -382,21 +378,18 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
 //                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, listFragment).commit();
 //                return listFragment;
             case REMIND:
-                remindFragment = RemindFragment.newInstance();
+                remindFragment = ContentFragment.newInstance(ContentFragment.REMIND);
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, remindFragment).commit();
                 return remindFragment;
             case ARCHIVE:
-                archiveFragment = ArchiveFragment.newInstance();
+                archiveFragment = ContentFragment.newInstance(ContentFragment.ARCHIVE);
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,archiveFragment).commit();
                 return archiveFragment;
             case RECYCLE:
-                recycleFragment = RecycleFragment.newInstance();
+                recycleFragment = ContentFragment.newInstance(ContentFragment.RECYCLE);
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,recycleFragment).commit();
                 return recycleFragment;
-//            case SETTINGS:
-//                settingsFragment = SettingsFragment.newInstance();
-//                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, settingsFragment).commit();
-//                return settingsFragment;
+
             default:
                 break;
 

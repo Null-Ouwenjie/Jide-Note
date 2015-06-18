@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ouwenjie.note.R;
+import com.ouwenjie.note.db.NoteDatabaseHelper;
 import com.ouwenjie.note.model.BaseNote;
 import com.ouwenjie.note.utils.LogUtils;
 
@@ -26,6 +27,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>imp
 
     private OnItemClickListener onItemClickListener;
     private OnItemLongClickListener onItemLongClickListener;
+
+    private NoteDatabaseHelper dbHelper = new NoteDatabaseHelper();
 
     public ListAdapter(Context context,List<BaseNote> noteList){
         super();
@@ -73,8 +76,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>imp
                 break;
         }
 
-        viewHolder.itemView.setTag(String.valueOf(note.getId()));  // 将当前的note 的 id 保存起来
-        LogUtils.e("Note ID == " + String.valueOf(note.getId()));
+        long dbId = dbHelper.getId(note);
+        viewHolder.itemView.setTag(String.valueOf(dbId));  // 将当前的note 的 id 保存起来
+        LogUtils.e("Note ID == " + String.valueOf(dbId));
     }
 
     @Override
@@ -90,7 +94,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>imp
     public void removeItem(BaseNote note) {
         BaseNote rNote = null;
         for(BaseNote baseNote : noteList){
-            if(baseNote.getId() == note.getId()){
+            if(dbHelper.getId(baseNote) == dbHelper.getId(note)){
                 rNote = baseNote;
             }
         }

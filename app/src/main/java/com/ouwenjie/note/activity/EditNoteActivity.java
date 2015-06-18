@@ -673,7 +673,8 @@ public class EditNoteActivity extends AppCompatActivity implements View.OnClickL
         note.setContent(contentEt.getText().toString());
         note.setLastChangeDate(TimeUtils.getCurrentTimeInString());
         note.setBgColor(bgColor);
-        note.save();
+        dbHelper.sava(note);
+//        note.save();
         LogUtils.e("Sava Note");
     }
 
@@ -814,7 +815,8 @@ public class EditNoteActivity extends AppCompatActivity implements View.OnClickL
                 cancelAlarmReceiver();
                 note.setNoteType(BaseNote.NOTE_TYPE_RECORD);    // 修改NOTE 的类型为 记事
                 note.setAlarmState(BaseNote.NOTE_ALARM_STATE_INVALID);
-                note.save();
+                dbHelper.sava(note);
+//                note.save();
                 closeAlarmLayout();
                 break;
             default:

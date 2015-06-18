@@ -27,6 +27,10 @@ public class NoteDatabaseHelper {
         note.save();
     }
 
+    public long getId(BaseNote note){
+        return note.getId();
+    }
+
     public BaseNote get(Long i){
         return BaseNote.findById(BaseNote.class,i);
     }
