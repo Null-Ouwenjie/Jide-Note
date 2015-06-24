@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.ouwenjie.note" >
 
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -21,17 +20,6 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
 
-    <!--
-     To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect
-     option is required to comply with the Google+ Sign-In developer policies
-    -->
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <!-- To retrieve the account name (email) as part of sign-in: -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-
     <application
         android:name=".NoteApplication"
         android:allowBackup="true"
@@ -39,7 +27,7 @@
         android:label="记得"
         android:theme="@style/MyAppBaseTheme" >
 
-
+        <!-- Umeng 配置 -->
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="555bfe3267e58e6caf0011fe" />
@@ -88,6 +76,15 @@
             android:name=".activity.IntroduceActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.account.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".activity.account.UserCenterActivity"
+            android:label="@string/title_activity_user_center"
+            android:screenOrientation="portrait"
+            />
+        <activity
             android:name=".activity.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:screenOrientation="portrait" >
@@ -107,6 +104,27 @@
             android:label="@string/title_activity_about_me"
             android:screenOrientation="portrait" >
         </activity>
+
+        <!-- Tencent SDK -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:noHistory="true"
+            android:launchMode="singleTask" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tencent1104609349" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            />
+        <!-- End Tencent SDK -->
+
 
         <receiver android:name=".receiver.NoteAlarmReceiver" />
 

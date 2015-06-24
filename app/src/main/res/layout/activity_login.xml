@@ -11,83 +11,18 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"/>
 
-    <EditText
-        android:id="@+id/login_phone_number"
+    <Button
+        android:id="@+id/qq_login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_vertical"
-        android:inputType="phone"
-        android:hint="手机号"
+        android:text="QQ登录"
         />
 
-    <EditText
-        android:id="@+id/login_password"
+    <Button
+        android:id="@+id/not_login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_vertical"
-        android:inputType="textPassword"
-        android:hint="密码"
-        />
-
-    <TextView
-        android:id="@+id/login_forget_pwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-        android:text="忘记密码"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <Button
-            android:id="@+id/login_register_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/material_deep_teal_200"
-            android:text="注册"
-            />
-
-        <Button
-            android:id="@+id/login_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/material_deep_teal_500"
-            android:text="登录"
-            />
-
-    </LinearLayout>
-
-
-    <TextView
-        android:id="@+id/sms_login_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:padding="10dp"
-        android:text="免注册，短信验证码登录"
+        android:text="暂不登录"
         />
 
 </LinearLayout>

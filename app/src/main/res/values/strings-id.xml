@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Bmob Application ID -->
+    <string name="bmob_id">16b5bebd569bf770519b7ea9cbd25f76</string>
+
+    <!-- Tencent APP ID -->
+    <string name="tencent_app_id">1104609349</string>
+
+
+</resources>

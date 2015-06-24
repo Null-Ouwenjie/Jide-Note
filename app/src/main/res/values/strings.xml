@@ -17,10 +17,10 @@
     <string name="title_activity_about">关于</string>
     <string name="title_activity_thanks">感谢</string>
     <string name="title_activity_about_me"> 关于我</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_settings">SettingsActivity</string>
-    <string name="title_activity_register">RegisterActivity</string>
-    <string name="title_activity_user_center">UserCenterActivity</string>
+    <string name="title_activity_login">登录</string>
+    <string name="title_activity_settings">设置</string>
+    <string name="title_activity_register">注册</string>
+    <string name="title_activity_user_center">账号中心</string>
     <string name="thanks_opensource">在开发过程中，使用了很多开源项目，没有他们的无私贡献就没有这个作品，在此对他们表示感谢。</string>
 
 </resources>

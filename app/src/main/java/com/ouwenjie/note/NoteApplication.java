@@ -1,15 +1,14 @@
 package com.ouwenjie.note;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 
 import com.orm.SugarApp;
-import com.ouwenjie.note.db.NoteDatabaseHelper;
-import com.ouwenjie.note.model.BaseNote;
+import com.ouwenjie.note.model.JideUser;
+import com.ouwenjie.note.utils.SharedPreferenceUtils;
 import com.umeng.analytics.AnalyticsConfig;
 import com.umeng.analytics.MobclickAgent;
-
-import java.util.TreeSet;
 
 /**
  *
@@ -17,7 +16,10 @@ import java.util.TreeSet;
  */
 public class NoteApplication extends SugarApp {
 
-    private TreeSet<BaseNote> noteSet = new TreeSet<>();
+    private static JideUser mUser  = new JideUser();
+
+    private boolean visitor = true;        // 账号使用状态，true 为游客状态,false 为登录状态。
+    public static final String KEY_VISITOR = "visitor";
 
     @Override
     public void onCreate() {
@@ -25,8 +27,12 @@ public class NoteApplication extends SugarApp {
         super.onCreate();
 
         umengConfig();
-        updateNoteList();
+//        updateNoteList();
 
+    }
+
+    public JideUser getUser() {
+        return mUser;
     }
 
     /**
@@ -38,21 +44,35 @@ public class NoteApplication extends SugarApp {
         AnalyticsConfig.enableEncrypt(true);
     }
 
+//
+//    /**
+//     * 重新拿一遍数据库
+//     */
+//    public void updateNoteList(){
+//        noteSet = new NoteDatabaseHelper().getAll();
+//    }
+//
+//    /**
+//     * 返回当前的笔记列表
+//     * @return
+//     */
+//    public TreeSet<BaseNote> getNoteSet() {
+//
+//        return noteSet;
+//    }
 
-    /**
-     * 重新拿一遍数据库
-     */
-    public void updateNoteList(){
-        noteSet = new NoteDatabaseHelper().getAll();
+    public static NoteApplication getNoteApplication(Activity activity ){
+        return (NoteApplication) activity.getApplication();
     }
 
-    /**
-     * 返回当前的笔记列表
-     * @return
-     */
-    public TreeSet<BaseNote> getNoteSet() {
+    public boolean isVisitor() {
+        visitor = (boolean) SharedPreferenceUtils.get(this,KEY_VISITOR,true);
+        return visitor;
+    }
 
-        return noteSet;
+    public void setVisitor(boolean visitor) {
+        SharedPreferenceUtils.put(this,KEY_VISITOR,visitor);
+        this.visitor = visitor;
     }
 
     /**

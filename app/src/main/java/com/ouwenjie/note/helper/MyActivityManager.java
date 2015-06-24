@@ -1,6 +1,8 @@
-package com.ouwenjie.note.utils;
+package com.ouwenjie.note.helper;
 
 import android.app.Activity;
+
+import com.ouwenjie.note.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;

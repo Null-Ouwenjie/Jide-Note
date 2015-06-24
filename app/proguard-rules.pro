@@ -87,7 +87,8 @@
 -dontwarn android.os.**
 
 -keep class com.sina.**{*;}     # 新浪微博
--keep class com.baidu.** { *; }
+-keep class com.baidu.** {*;}
+-keep class com.tencent.**{*;}
 
 -keep class android.support.v4.**{*;}
 -keep class android.support.v7.**{*;}
@@ -142,3 +143,19 @@
 -keep class org.xbill.** { *;}
 
 -keepattributes *Annotation*
+
+
+# Bmob 相关
+-ignorewarnings
+# 这里根据具体的SDK版本修改
+-libraryjars libs/BmobSDK_V3.4.0_0616.jar
+
+-keepattributes Signature
+-keep class cn.bmob.v3.** {*;}
+
+# 保证继承自BmobObject、BmobUser类的JavaBean不被混淆
+-keep class com.example.bmobexample.Person{*;}
+-keep class com.example.bmobexample.MyUser{*;}
+-keep class com.example.bmobexample.relationaldata.Weibo{*;}
+-keep class com.example.bmobexample.relationaldata.Comment{*;}
+

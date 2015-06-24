@@ -18,10 +18,18 @@ import android.widget.LinearLayout;
 
 import com.ouwenjie.note.NoteApplication;
 import com.ouwenjie.note.R;
+import com.ouwenjie.note.activity.account.LoginActivity;
+import com.ouwenjie.note.activity.account.UserCenterActivity;
+import com.ouwenjie.note.db.NoteDatabaseHelper;
 import com.ouwenjie.note.fragment.ContentFragment;
+import com.ouwenjie.note.helper.BmobHelper;
+import com.ouwenjie.note.helper.MyActivityManager;
+import com.ouwenjie.note.helper.TencentSDKHelper;
 import com.ouwenjie.note.model.BaseNote;
+import com.ouwenjie.note.model.JideUser;
 import com.ouwenjie.note.utils.LogUtils;
-import com.ouwenjie.note.utils.MyActivityManager;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.UiError;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
@@ -46,7 +54,7 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
     public static final String REMIND = "提醒";
     public static final String ARCHIVE = "已归档";
     public static final String RECYCLE = "回收站";
-//    public static final String ACCOUNT = "账号";
+    public static final String ACCOUNT = "账号";
     public static final String SETTINGS = "设置";
 
     private DrawerLayout drawerLayout;      // 整个布局框架
@@ -56,6 +64,7 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
     private LinearLayout leftlayout;        // 左侧 Menu
 
     private TreeSet<BaseNote> noteSet = new TreeSet<>();    //笔记集合
+    private NoteDatabaseHelper databaseHelper;
 
     private ContentFragment contentFragment;
 
@@ -65,6 +74,11 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
     private ContentFragment archiveFragment;
     private ContentFragment recycleFragment;
 
+    private TencentSDKHelper tencentSDKHelper;
+    private JideUser mUser;
+
+    private NoteApplication application;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +86,26 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
 
         MyActivityManager.getInstance().addActivity(this);
 
-        noteSet = ((NoteApplication)getApplication()).getNoteSet();
+        application = NoteApplication.getNoteApplication(this);
+        databaseHelper = new NoteDatabaseHelper();
+
+        BmobHelper.initBmob(this);
+        tencentSDKHelper = TencentSDKHelper.getInstance(this.getApplicationContext());
+
+        checkQQLogState();
+
+        updateNoteSet();
+
+        CreateActivity();
+
+
+    }
+
+
+    /**
+     * 初始化页面
+     */
+    private void CreateActivity() {
         recordFragment = ContentFragment.newInstance(ContentFragment.RECORD);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_frame,recordFragment)
@@ -94,7 +127,6 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
         createMenuList();
 
         viewAnimator = new ViewAnimator<>(MainActivity.this, menuItemList, recordFragment, drawerLayout, this);
-
     }
 
     @Override
@@ -102,9 +134,70 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
         super.onResume();
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);// 淡化status bar 和 navigation bar
-
         MobclickAgent.onResume(this);
+
+        if(JideUser.getLoginStatusChanged(this.getApplicationContext())) {  // 当为true 时说明登录状态已被改变
+            LogUtils.e("MainActivity == ","onResume() ==  LoginStatusChanged");
+            // 根据登录状态显示相应的NOTE SET
+            if (application.isVisitor()) {
+                removeUserNote();
+            } else {
+                // TODO 更新CloudNote 到本地
+
+            }
+            JideUser.setLoginStatusChanged(this.getApplicationContext(),false);
+        }
+
     }
+
+
+    // 获取游客的NOTE SET,清除用户的NOTE
+    private void removeUserNote() {
+        updateNoteSet();
+        for (BaseNote note : noteSet) {
+            LogUtils.e("RemoveUserNote ==","userId="+note.getUserid());
+            if (!note.getUserid().equals("0")) {
+                databaseHelper.delete(note);
+            }
+        }
+        updateNoteSet();
+        notificationDataChangedToFragment();
+    }
+
+    private void checkQQLogState() {
+
+        mUser = application.getUser();
+        // 获取QQ登录授权有限期,没有则是-1
+        long expireTime = mUser.getExpireTime(this.getApplicationContext());
+        LogUtils.e("checkQQLogState ==","ExpireTime="+expireTime);
+        if(System.currentTimeMillis() > expireTime) {   // 如果已经过期，或者没有登录
+            mUser.removeAllAuth(getApplicationContext());   // 清除所有授权信息
+            application.setVisitor(true);       // 游客状态
+
+            removeUserNote();
+        }else{
+            // TODO 从云端获取该账号的NOTE SET
+            String token = mUser.getAccess_token(getApplicationContext());
+            String expires = mUser.getExpires_in(getApplicationContext());
+            String openId = mUser.getOpenid(getApplicationContext());
+
+            tencentSDKHelper.getTencent().setAccessToken(token,expires);
+            tencentSDKHelper.getTencent().setOpenId(openId);
+
+            tencentSDKHelper.login(this, new IUiListener() {
+                @Override
+                public void onComplete(Object o) {}
+                @Override
+                public void onError(UiError uiError) {
+                    mUser.removeAllAuth(getApplicationContext());
+                    NoteApplication.getNoteApplication(MainActivity.this).setVisitor(true);
+                }
+                @Override
+                public void onCancel() {}
+            });
+        }
+    }
+
 
     @Override
     protected void onPause() {
@@ -155,10 +248,37 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
         }
     }
 
+    /**
+     * 通知当前fragment 更新Adapter
+     */
+    private void notificationDataChangedToFragment() {
+        switch (getTitle().toString()){
+            case RECORD:
+                LogUtils.e("notificationDataChangedToFragment == "+" RECORD ");
+                recordFragment.clearNoteList();
+                recordFragment.initRecyclerView();
+                break;
+//            case LIST:
+//                break;
+            case REMIND:
+                remindFragment.clearNoteList();
+                remindFragment.initRecyclerView();
+                break;
+            case ARCHIVE:
+                archiveFragment.clearNoteList();
+                archiveFragment.initRecyclerView();
+                break;
+            case RECYCLE:
+                recycleFragment.clearNoteList();
+                recycleFragment.initRecyclerView();
+                break;
+            default:
+                break;
+        }
+    }
+
     private void updateNoteSet() {
-        NoteApplication application = (NoteApplication) (this.getApplication());
-        application.updateNoteList();
-        noteSet = application.getNoteSet();
+        noteSet = databaseHelper.getAll();
     }
 
     public TreeSet<BaseNote> getNoteSet() {
@@ -223,8 +343,8 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
         menuItemList.add(menuItem4);
         SlideMenuItem menuItem5 = new SlideMenuItem(RECYCLE,R.drawable.icon_cn_recycle_104);
         menuItemList.add(menuItem5);
-//        SlideMenuItem menuItem6 = new SlideMenuItem(ACCOUNT,R.drawable.icon_cn_account_104);
-//        menuItemList.add(menuItem6);
+        SlideMenuItem menuItem6 = new SlideMenuItem(ACCOUNT,R.drawable.icon_cn_account_104);
+        menuItemList.add(menuItem6);
         SlideMenuItem menuItem7 = new SlideMenuItem(SETTINGS, R.drawable.icon_cn_settings_104);
         menuItemList.add(menuItem7);
     }
@@ -312,8 +432,6 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
             case RECYCLE:
                 recycleFragment.getAdapter().searchNotes(query);
                 break;
-            case SETTINGS:
-                break;
             default:
                 break;
         }
@@ -341,8 +459,6 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
             case RECYCLE:
                 recycleFragment.getAdapter().removeAllItem();
                 recycleFragment.initRecyclerView();
-                break;
-            case SETTINGS:
                 break;
             default:
                 break;
@@ -414,6 +530,13 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
             default:
                 if(slideMenuItem.getName().equals(SETTINGS)){
                     startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                    return screenShotable;
+                }else if(slideMenuItem.getName().equals(ACCOUNT)){
+                    if(application.isVisitor()) {
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                    }else{
+                        startActivity(new Intent(MainActivity.this, UserCenterActivity.class));
+                    }
                     return screenShotable;
                 }else {
                     setTitle(slideMenuItem.getName());

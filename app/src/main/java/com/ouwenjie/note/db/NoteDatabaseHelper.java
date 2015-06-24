@@ -3,6 +3,7 @@ package com.ouwenjie.note.db;
 import com.ouwenjie.note.model.BaseNote;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.TreeSet;
 
 /**
@@ -44,5 +45,13 @@ public class NoteDatabaseHelper {
         return noteSet;
     }
 
+    public TreeSet<BaseNote> getNoteSetByUserId(String userid){
+        TreeSet<BaseNote> noteSet = new TreeSet<>();
+        List<BaseNote> list = BaseNote.find(BaseNote.class,"userid",userid);
+        for(BaseNote note : list){
+            noteSet.add(note);
+        }
 
+        return noteSet;
+    }
 }

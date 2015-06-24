@@ -16,7 +16,7 @@ import com.ouwenjie.note.R;
 import com.ouwenjie.note.db.NoteDatabaseHelper;
 import com.ouwenjie.note.model.BaseNote;
 import com.ouwenjie.note.receiver.NoteAlarmReceiver;
-import com.ouwenjie.note.utils.MyActivityManager;
+import com.ouwenjie.note.helper.MyActivityManager;
 import com.ouwenjie.note.utils.TimeUtils;
 import com.umeng.analytics.MobclickAgent;
 

@@ -2,8 +2,9 @@ package com.ouwenjie.note.model;
 
 import android.net.Uri;
 
-import com.orm.SugarRecord;
 import com.ouwenjie.note.utils.TimeUtils;
+
+import cn.bmob.v3.BmobObject;
 
 /**
  * 基础的 note 类，具有
@@ -17,7 +18,7 @@ import com.ouwenjie.note.utils.TimeUtils;
  * ···
  * Created by 文杰 on 2015/2/27.
  */
-public class BaseNote extends SugarRecord<BaseNote> implements Comparable {
+public class CloudNote extends BmobObject implements Comparable {
 
     public static final int LIGHT_YELLOW = 0;
     public static final int LIGHT_RED = 1;
@@ -45,27 +46,23 @@ public class BaseNote extends SugarRecord<BaseNote> implements Comparable {
     public static final int REQ_NEW_NOTE_WITH_ALARM = 1001;
     public static final int REQ_NOTE_IN_ARCHIVE = 1002;
 
-    private String userid;
+    private String content;         // 笔记内容
+    private String createDate;      // 创建日期
+    private String lastChangeDate;  // 最后的修改时间
+    private int bgColor;            // 笔记的背景颜色
 
-    private String content;
-    private String createDate;
-    private String lastChangeDate;
-    private int bgColor;
+    private int noteType;           // 笔记的类型
+    private int noteState;          // 笔记的状态
 
-    private int noteType;
-    private int noteState;
-
-    private int alarmState;
-    private String alarmDate;
+    private int alarmState;         // 闹钟的状态
+    private String alarmDate;       // 闹钟的日期
 
     private String imageSet;        // 图片的Uri.toString 的集合，以空格分隔
 
-    public BaseNote(){
-        this("");
-    }
+    public CloudNote(){}
 
-    public BaseNote(String content){
-        this.userid = "0";  // 0 代表是该Note 属于游客
+    public CloudNote(String content){
+
         this.content = content;
         this.createDate = TimeUtils.getCurrentTimeInString();
         lastChangeDate = TimeUtils.getCurrentTimeInString();
@@ -80,13 +77,6 @@ public class BaseNote extends SugarRecord<BaseNote> implements Comparable {
         imageSet = "";
     }
 
-    public String getUserid() {
-        return userid;
-    }
-
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
 
     public String getContent() {
         return content;
@@ -100,9 +90,9 @@ public class BaseNote extends SugarRecord<BaseNote> implements Comparable {
         return createDate;
     }
 
-//    public void setCreateDate(String createDate) {
-//        this.createDate = createDate;
-//    }
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
 
     public String getLastChangeDate() {
         return lastChangeDate;
@@ -213,7 +203,7 @@ public class BaseNote extends SugarRecord<BaseNote> implements Comparable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        BaseNote baseNote = (BaseNote) o;
+        CloudNote baseNote = (CloudNote) o;
 
         if (bgColor != baseNote.bgColor) return false;
         if (!content.equals(baseNote.content)) return false;
@@ -236,11 +226,11 @@ public class BaseNote extends SugarRecord<BaseNote> implements Comparable {
 
     @Override
     public int compareTo(Object another) {
-        if(another instanceof BaseNote){
-            BaseNote note = (BaseNote) another;
-            if(this.lastChangeDate.compareTo(((BaseNote) another).lastChangeDate) > 0){
+        if(another instanceof CloudNote){
+            CloudNote note = (CloudNote) another;
+            if(this.lastChangeDate.compareTo(((CloudNote) another).lastChangeDate) > 0){
                 return -1;
-            }else if(this.lastChangeDate.compareTo(((BaseNote) another).lastChangeDate) < 0){
+            }else if(this.lastChangeDate.compareTo(((CloudNote) another).lastChangeDate) < 0){
                 return 1;
             }
         }

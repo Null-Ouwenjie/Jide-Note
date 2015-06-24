@@ -28,6 +28,7 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fourmob.datetimepicker.date.DatePickerDialog;
+import com.ouwenjie.note.NoteApplication;
 import com.ouwenjie.note.R;
 import com.ouwenjie.note.adapter.ImageListAdapter;
 import com.ouwenjie.note.db.NoteDatabaseHelper;
@@ -35,7 +36,7 @@ import com.ouwenjie.note.model.BaseNote;
 import com.ouwenjie.note.receiver.NoteAlarmReceiver;
 import com.ouwenjie.note.utils.ImageUtils;
 import com.ouwenjie.note.utils.LogUtils;
-import com.ouwenjie.note.utils.MyActivityManager;
+import com.ouwenjie.note.helper.MyActivityManager;
 import com.ouwenjie.note.utils.TimeUtils;
 import com.sleepbot.datetimepicker.time.RadialPickerLayout;
 import com.sleepbot.datetimepicker.time.TimePickerDialog;
@@ -673,6 +674,9 @@ public class EditNoteActivity extends AppCompatActivity implements View.OnClickL
         note.setContent(contentEt.getText().toString());
         note.setLastChangeDate(TimeUtils.getCurrentTimeInString());
         note.setBgColor(bgColor);
+        if(!NoteApplication.getNoteApplication(this).isVisitor()){
+            note.setUserid(NoteApplication.getNoteApplication(this).getUser().getOpenid(this.getApplicationContext()));
+        }
         dbHelper.sava(note);
 //        note.save();
         LogUtils.e("Sava Note");

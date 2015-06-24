@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.gc.materialdesign.views.ButtonFloat;
-import com.ouwenjie.note.NoteApplication;
 import com.ouwenjie.note.R;
 import com.ouwenjie.note.activity.EditNoteActivity;
 import com.ouwenjie.note.activity.MainActivity;
@@ -183,6 +182,10 @@ public class ContentFragment extends Fragment implements View.OnClickListener ,S
         }
     }
 
+    public void clearNoteList(){
+        noteList.clear();
+    }
+
     public void initRecyclerView() {
 
         layoutManager = new GridLayoutManager(activity,2);
@@ -201,7 +204,7 @@ public class ContentFragment extends Fragment implements View.OnClickListener ,S
         recyclerView.getItemAnimator().setChangeDuration(300);
     }
 
-    private List<BaseNote> myDataset() {
+    public List<BaseNote> myDataset() {
         TreeSet<BaseNote> allNote = ((MainActivity) activity).getNoteSet();
         switch (Content_Type){
             case RECORD:
@@ -520,9 +523,7 @@ public class ContentFragment extends Fragment implements View.OnClickListener ,S
 
 
     private void refreshData() {
-        NoteApplication application = (NoteApplication) (activity.getApplication());
-        application.updateNoteList();
-        ((MainActivity) activity).setNoteSet(application.getNoteSet());
+        ((MainActivity) activity).setNoteSet(new NoteDatabaseHelper().getAll());
     }
 
 }

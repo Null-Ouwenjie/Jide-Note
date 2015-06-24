@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.ouwenjie.note.R;
 import com.ouwenjie.note.db.NoteDatabaseHelper;
 import com.ouwenjie.note.model.BaseNote;
-import com.ouwenjie.note.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -78,7 +77,7 @@ public class BaseNoteAdapter extends RecyclerView.Adapter<BaseNoteAdapter.ViewHo
 
         long dbId = dbHelper.getId(note);
         viewHolder.itemView.setTag(String.valueOf(dbId));  // 将当前的note 的 id 保存起来
-        LogUtils.e("Note ID == " + String.valueOf(dbId));
+//        LogUtils.e("Note ID == " + String.valueOf(dbId));
     }
 
     @Override
